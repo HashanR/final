@@ -72,4 +72,4 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: service-conf
-                  key: authhostinternal
+                  key: authhostextranal
