@@ -38,7 +38,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: service-conf
-                  key: authhostextranal
+                  key: authhostinternal
             - name: BACK_END
               valueFrom:
                 configMapKeyRef:

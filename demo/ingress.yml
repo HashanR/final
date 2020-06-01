@@ -6,10 +6,3 @@ spec:
   backend:
     serviceName: frontend-nodeport-service 
     servicePort: 8090
-  rules:
-  - http:
-      paths:
-      - path: /login
-        backend:
-          serviceName: auth-nodeport-service
-          servicePort: 9191
