@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-conf
+data:
+        host: 34.72.11.24:30037

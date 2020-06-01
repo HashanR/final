@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nodeport-service
+spec:
+  selector:
+    app: mobile-info-ui
+  type: NodePort
+  ports:
+  - name: http
+    port: 8090
+    targetPort: 8090
+    nodePort: 30036
+    protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mobile-info-ui
+spec:
+  selector:
+    matchLabels:
+      app: mobile-info-ui
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mobile-info-ui
+    spec:
+      containers:
+        - name: mobile-info-ui
+          image: hashanr/mobile-info-ui:test-5
+          ports:
+            - containerPort: 8090
+          env:
+            - name: AUTH_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-conf
+                  key: host

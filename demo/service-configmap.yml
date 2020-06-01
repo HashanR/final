@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: service-conf
+data:
+       authhost: 34.72.11.24:30037
+       backendhost: backend-clusterip-service:9191 
