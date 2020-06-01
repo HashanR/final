@@ -3,5 +3,6 @@ kind: ConfigMap
 metadata:
   name: service-conf
 data:
-       authhost: 34.72.11.24:30037
-       backendhost: backend-clusterip-service:9191 
+       authhostinternal: auth-clusterip-service:9191
+       backendhost: backend-clusterip-service:8080
+       authhostextranal: 34.72.11.24:30037

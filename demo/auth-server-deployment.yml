@@ -13,6 +13,21 @@ spec:
     nodePort: 30037
     protocol: TCP
 ---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-clusterip-service
+spec:
+  type: ClusterIP
+  selector:
+    app: authorization-server
+  ports:
+    - protocol: TCP
+      port: 9191
+      targetPort: 9191
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -42,7 +57,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: db-conf
-                  key: name
+                  key: authdb
             - name: DB_USERNAME  # Setting Database username from Secret
               valueFrom:
                 secretKeyRef:
@@ -51,6 +66,6 @@ spec:
             - name: DB_PASSWORD # Setting Database password from Secret
               valueFrom:
                 secretKeyRef:
-                  name: db-credentials
+                  name: db-root-credentials
                   key: password
 

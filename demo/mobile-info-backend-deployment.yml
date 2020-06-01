@@ -57,7 +57,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: db-conf
-                  key: name
+                  key: subsdb
             - name: DB_USERNAME  # Setting Database username from Secret
               valueFrom:
                 secretKeyRef:
@@ -66,10 +66,10 @@ spec:
             - name: DB_PASSWORD # Setting Database password from Secret
               valueFrom:
                 secretKeyRef:
-                  name: db-credentials
+                  name: db-root-credentials
                   key: password
             - name: AUTH_SERVER
               valueFrom:
                 configMapKeyRef:
                   name: service-conf
-                  key: authhost
+                  key: authhostinternal
