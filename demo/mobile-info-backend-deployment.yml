@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
         - name: mobile-info-backend
-          image: hashanr/mobile-info-backend:1.0.1
+          image: hashanr/mobile-info-backend:hash
           ports:
             - containerPort: 8080
           env:   # Setting Enviornmental Variables
