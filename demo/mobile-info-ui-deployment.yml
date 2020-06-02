@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: mobile-info-ui
-          image: hashanr/mobile-info-ui:test1
+          image: hashanr/mobile-info-ui:1.1.2
           ports:
             - containerPort: 8090
           env:

@@ -15,17 +15,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-nodeport-service
+  name: backend-loadbalancer-service
 spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
   selector:
     app: mobile-info-backend
-  type: NodePort
-  ports:
-  - name: http
-    port: 8080
-    targetPort: 8080
-    nodePort: 30038
-    protocol: TCP
+  type: LoadBalancer
 
 ---
 apiVersion: apps/v1
@@ -44,7 +42,7 @@ spec:
     spec:
       containers:
         - name: mobile-info-backend
-          image: hashanr/mobile-info-backend:hash99
+          image: hashanr/mobile-info-backend:1.0.2
           ports:
             - containerPort: 8080
           env:   # Setting Enviornmental Variables
